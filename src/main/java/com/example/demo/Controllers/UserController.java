@@ -39,23 +39,6 @@ public class UserController {
     }
 
 
-    @CrossOrigin(origins = "http://localhost:3000")
-    @RequestMapping(value = "/api/getFiles", method = RequestMethod.GET)
-    public BasicResponseModel getFiles(@RequestParam String filter) {
-        BasicResponseModel basicResponseModel;
-        List<File> filterList;
-        filterList = repository.filesList.stream().filter((file ->
-                filter.equals(file.getFileName())
-                )).collect(Collectors.toList());
-        if (filterList.isEmpty()) {
-            basicResponseModel = new BasicResponseModel("File not found!");
-        } else {
-            basicResponseModel = new BasicResponseModel(filterList);
-        }
-        return basicResponseModel;
-    }
-
-
 //    @CrossOrigin(origins = "http://localhost:3000")
 //    @RequestMapping(value = "/api/getFiles", method = RequestMethod.GET)
 //    public BasicResponseModel getFiles(@RequestParam String sortBy, @RequestParam String sortType) {
